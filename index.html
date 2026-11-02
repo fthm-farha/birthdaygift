@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Universe For Rouf ✦ Made With Love by Farha</title>
+    <meta name="description" content="An extraordinary, immersive romantic digital universe created by Farha for Rouf's birthday.">
+    
+    <!-- Google Fonts for cinematic elegance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="universe-body">
+
+    <!-- Canvas for deep space stars, nebulae, and interactive particle universe -->
+    <canvas id="universeCanvas" class="cosmic-canvas" aria-hidden="true"></canvas>
+    
+    <!-- Canvas for celebratory starlight and confetti -->
+    <canvas id="celebrationCanvas" class="celebration-canvas" aria-hidden="true"></canvas>
+
+    <!-- Cursor particle glow follower -->
+    <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- AUDIO REQUIREMENT: HTML Audio element with real project audio file -->
+    <audio id="birthdayMusic" loop preload="auto">
+        <source src="assets/audio/our-song.mp3" type="audio/mpeg">
+        <source src="assets/audio/our-song.wav" type="audio/wav">
+        Your browser does not support audio playback.
+    </audio>
+
+    <!-- FLOATING CONTROLS: Music & Navigation Pill -->
+    <header class="cosmic-nav-bar" id="cosmicNavbar" role="banner">
+        <div class="nav-brand">
+            <span class="brand-stars">✦</span>
+            <span class="brand-text">Farha & Rouf</span>
+        </div>
+
+        <nav class="act-indicators" aria-label="Chapter navigation">
+            <button class="nav-dot active" data-target="act-mystery" aria-label="Act 1: Mystery"><span class="dot-label">Prologue</span></button>
+            <button class="nav-dot" data-target="act-story" aria-label="Act 2: Story"><span class="dot-label">Our Story</span></button>
+            <button class="nav-dot" data-target="act-journey" aria-label="Act 3: Journey"><span class="dot-label">Journey</span></button>
+            <button class="nav-dot" data-target="act-galaxy" aria-label="Act 4: Galaxy"><span class="dot-label">Galaxy</span></button>
+            <button class="nav-dot" data-target="act-sanctuary" aria-label="Act 5: Sanctuary"><span class="dot-label">Sanctuary</span></button>
+            <button class="nav-dot" data-target="act-letter" aria-label="Act 6: Love Letter"><span class="dot-label">Letter</span></button>
+            <button class="nav-dot" data-target="act-celebration" aria-label="Act 7: Celebration"><span class="dot-label">Celebrate</span></button>
+            <button class="nav-dot" data-target="act-final" aria-label="Act 8: Surprise"><span class="dot-label">Forever</span></button>
+        </nav>
+
+        <div class="music-controller">
+            <button id="musicToggleBtn" class="music-pill" aria-label="Toggle background music" title="Toggle Our Song">
+                <span class="music-icon" aria-hidden="true">♫</span>
+                <span class="music-title">Our Song</span>
+                <span class="music-bars" id="musicBars" aria-hidden="true">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                    <span class="bar bar-4"></span>
+                </span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SECRET EASTER EGG TOAST NOTIFICATION -->
+    <div id="easterEggToast" class="easter-egg-toast" role="status" aria-live="polite">
+        <span class="toast-sparkle">✦</span>
+        <span id="toastMessage" class="toast-message">You discovered a secret memory star!</span>
+    </div>
+
+    <!-- MAIN EXPERIENCE CONTAINER -->
+    <main id="experienceContainer" class="experience-container">
+
+        <!-- ===================================================================
+             ACT I — THE MYSTERY & OPENING (THE SECRET UNIVERSE)
+             =================================================================== -->
+        <section id="act-mystery" class="act-section act-mystery" aria-label="Act I: The Secret Universe">
+            <div class="mystery-vignette"></div>
+
+            <div class="mystery-content-wrapper">
+                <div class="intro-sequence" id="introSequence">
+                    <p class="fade-quote quote-1" id="q1">
+                        &ldquo;Some people become a beautiful part of your story.&rdquo;
+                    </p>
+                    <p class="fade-quote quote-2" id="q2">
+                        &ldquo;Somehow...&rdquo;
+                    </p>
+                    <p class="fade-quote quote-3" id="q3">
+                        &ldquo;one person becomes the story.&rdquo;
+                    </p>
+
+                    <div class="constellation-glow-container" id="constellationGlow">
+                        <div class="central-glow-ring"></div>
+                        <div class="central-star-core">✦</div>
+                    </div>
+
+                    <div class="reveal-title-group" id="revealTitleGroup">
+                        <h2 class="mystery-subheading">This little universe is for you.</h2>
+                        <h1 class="mystery-recipient-name">Rouf.</h1>
+                        <p class="mystery-author-credit">Made with love by <span class="author-highlight">Farha</span></p>
+                        <p class="mystery-birthday-badge">Happy Birthday ❤️</p>
+                        
+                        <div class="action-btn-wrapper">
+                            <button id="enterUniverseBtn" class="enter-universe-btn" aria-label="Enter our little universe">
+                                <span class="btn-shine"></span>
+                                <span class="btn-text">ENTER OUR LITTLE UNIVERSE ✦</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden clickable stars for easter eggs in Act I -->
+                <button class="secret-star star-egg-1" data-secret="&ldquo;Every quiet moment with you is something I hold close.&rdquo;" aria-label="Mysterious distant star">✦</button>
+                <button class="secret-star star-egg-2" data-secret="&ldquo;You make the universe feel infinitely warmer, shanuooo.&rdquo;" aria-label="Glow of a hidden star">✦</button>
+            </div>
+
+            <div class="scroll-prompt" id="scrollPrompt">
+                <span class="prompt-text">Scroll or explore to begin our journey</span>
+                <span class="prompt-arrow">↓</span>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT II — THE STORY (BEFORE THE MEMORIES & OUR STORY)
+             =================================================================== -->
+        <section id="act-story" class="act-section act-story" aria-label="Act II: Our Story">
+            <div class="section-container">
+                <div class="chapter-header">
+                    <span class="chapter-tag">Chapter 01</span>
+                    <h2 class="chapter-title">Before The Memories...</h2>
+                    <p class="chapter-lead">&ldquo;There was a beginning.&rdquo;</p>
+                    <p class="chapter-sublead">&ldquo;And somehow, that beginning became something beautiful.&rdquo;</p>
+                </div>
+
+                <div class="story-showcase-grid">
+                    <div class="couple-card Rouf-card">
+                        <div class="card-glow-halo"></div>
+                        <div class="card-inner-frame">
+                            <div class="card-image-box">
+                                <img src="assets/images/pic 5.jpg" alt="Photograph of shanuoo" class="profile-photo" id="roufPhoto" loading="lazy">
+                                <div class="image-overlay-tint"></div>
+                            </div>
+                            <div class="card-caption">
+                                <span class="caption-badge">The Birthday my love</span>
+                                <h3 class="profile-name">shanuoo</h3>
+                                <p class="profile-desc">The person whose make me smile every day and i feel like an extraordinary celebration.your bday is something special to me like youhh</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-center-bridge">
+                        <div class="cosmic-bond-line"></div>
+                        <div class="heart-pulse-node">
+                            <span class="heart-symbol">❤️</span>
+                            <span class="connection-spark">✦</span>
+                        </div>
+                        <div class="cosmic-bond-line"></div>
+                        <p class="connection-tag">Farha &amp; rouf</p>
+                    </div>
+                    <div class="couple-card farha-card">
+                        <div class="card-glow-halo"></div>
+                        <div class="card-inner-frame">
+                            <div class="card-image-box">
+                                <img src="assets/images/farha.jpeg" alt="Photograph of Farha" class="profile-photo" id="farhaPhoto" loading="lazy">
+                                <div class="image-overlay-tint"></div>
+                            </div>
+                            <div class="card-caption">
+                                <span class="caption-badge">With All My Heart</span>
+                                <h3 class="profile-name">Farha</h3>
+                                <p class="profile-desc">The one who built this little digital galaxy to remind you how much you are loved and you are mean to meee.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDITABLE BEGINNING PLACEHOLDER (Requirement 9) -->
+                <div class="story-prose-card glass-panel">
+                    <h3 class="story-prose-heading">Our Story</h3>
+                    <div class="story-prose-text editable-content" id="ourStoryContent">
+                        <p class="story-editable-prompt">[OUR BEGINNING — EDIT THIS]</p>
+                        <p>
+                            the day we met first you are something special to me 
+                            From our very first conversations to every laugh we have shared, each moment has added a new light to my little life.
+                        </p>
+                        <p>
+                            This universe is a tribute to that beginning, and to all the moments that continue to unfold between us.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT II (CONT.) — INTERACTIVE 3D JOURNEY (TIMELINE)
+             =================================================================== -->
+        <section id="act-journey" class="act-section act-journey" aria-label="Our Journey Timeline">
+            <div class="section-container">
+                <div class="chapter-header">
+                    <span class="chapter-tag">Chapter 02</span>
+                    <h2 class="chapter-title">Our Journey</h2>
+                    <p class="chapter-sublead">Traveling through time, one cherished moment after another.</p>
+                </div>
+
+                <div class="timeline-interactive-container">
+                    <div class="timeline-rail" aria-hidden="true">
+                        <div class="timeline-rail-glow" id="timelineRailGlow"></div>
+                    </div>
+
+                    <div class="timeline-nodes-list" role="list">
+
+                        <!-- Node 01: The Beginning -->
+                        <div class="timeline-node" data-node="1" role="listitem">
+                            <button class="node-marker-btn" aria-label="Timeline point 1: The Beginning">
+                                <span class="node-num">01</span>
+                                <span class="node-pulse"></span>
+                            </button>
+                            <div class="node-card glass-panel">
+                                <span class="node-date-tag">Chapter 01</span>
+                                <h4 class="node-title">01 — The Beginning</h4>
+                                <div class="node-image-wrap">
+                                    <img src="assets/images/file_00000000078461fa92a4f1cb85867308.png" alt="Moment from our beginning" class="node-img" loading="lazy">
+                                </div>
+                                <div class="node-description editable-content">
+                                    <p class="node-placeholder-text">[OUR BEGINNING — EDIT THIS]</p>
+                                    <p class="node-caption">idh njammal 2nd yearil njn birthday suprise thannadh ormando "oru cake"annh idtha pic aanh cute ellee .</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 02: The First Memory -->
+                        <div class="timeline-node" data-node="2" role="listitem">
+                            <button class="node-marker-btn" aria-label="Timeline point 2: The First Memory">
+                                <span class="node-num">02</span>
+                                <span class="node-pulse"></span>
+                            </button>
+                            <div class="node-card glass-panel">
+                                <span class="node-date-tag">Chapter 02</span>
+                                <h4 class="node-title">02 — memoriess</h4>
+                                <div class="node-image-wrap">
+                                    <img src="assets/images/child 1.png" alt="Cherished first memories and shared laughter" class="node-img" loading="lazy">
+                                </div>
+                                <div class="node-description editable-content">
+                                    <p class="node-placeholder-text">[MEMMORY — EDIT THIS]</p>
+                                    <p class="node-caption">not first memoryy bt every memory we make,forever and always .</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 03: That Beautiful Moment -->
+                        <div class="timeline-node" data-node="3" role="listitem">
+                            <button class="node-marker-btn" aria-label="Timeline point 3: That Beautiful Moment">
+                                <span class="node-num">03</span>
+                                <span class="node-pulse"></span>
+                            </button>
+                            <div class="node-card glass-panel">
+                                <span class="node-date-tag">Chapter 03</span>
+                                <h4 class="node-title">03 — That Beautiful Moment</h4>
+                                <div class="node-image-wrap">
+                                    <img src="assets/images/eyyeee 1.jpg" alt="A special moment kept close in heart" class="node-img" loading="lazy">
+                                </div>
+                                <div class="node-description editable-content">
+                                    <p class="node-placeholder-text">[THAT BEAUTIFUL MOMENT — EDIT THIS]</p>
+                                    <p class="node-caption">kannan nella reselyeee idh or cheriya memory mathram elaa always your eyes something special "kappi kannh"  .</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 04: Another Chapter -->
+                        <div class="timeline-node" data-node="4" role="listitem">
+                            <button class="node-marker-btn" aria-label="Timeline point 4: Another Chapter">
+                                <span class="node-num">04</span>
+                                <span class="node-pulse"></span>
+                            </button>
+                            <div class="node-card glass-panel">
+                                <span class="node-date-tag">Chapter 04</span>
+                                <h4 class="node-title">04 — Another Chapter</h4>
+                                <div class="node-image-wrap">
+                                    <img src="assets/images/outside 1.jpg" alt="Growing together through life" class="node-img" loading="lazy">
+                                </div>
+                                <div class="node-description editable-content">
+                                    <p class="node-placeholder-text">[ANOTHER CHAPTER — EDIT THIS]</p>
+                                    <p class="node-caption">annual day kh or thalloke keynjtt idtha pic annh ,or dance oke ndaynnuu "aesthetic aayoo".</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 05: Today -->
+                        <div class="timeline-node active-node" data-node="5" role="listitem">
+                            <button class="node-marker-btn" aria-label="Timeline point 5: Today">
+                                <span class="node-num">05</span>
+                                <span class="node-pulse"></span>
+                            </button>
+                            <div class="node-card glass-panel highlight-node">
+                                <span class="node-date-tag celebration-tag">Special Day</span>
+                                <h4 class="node-title">05 — Today</h4>
+                                <div class="node-image-wrap special-glow">
+                                    <img src="assets/images/pic 4.jpg" alt="Celebrating Farhan today" class="node-img" loading="lazy">
+                                </div>
+                                <div class="node-description editable-content">
+                                    <p class="node-placeholder-text">[TODAY — EDIT THIS: Rouf's Birthday]</p>
+                                    <p class="node-caption"> "cute"eleee you are not just bf,you are my "safe placee",and my favoouurriteee manhhh </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT III — THE MEMORIES: MEMORY GALAXY
+             =================================================================== -->
+        <section id="act-galaxy" class="act-section act-galaxy" aria-label="Act III: Our Little Galaxy">
+            <div class="section-container">
+                <div class="chapter-header">
+                    <span class="chapter-tag">Chapter 03</span>
+                    <h2 class="chapter-title">Our Little Galaxy</h2>
+                    <p class="chapter-sublead">Where every photograph is a star floating in our private universe.</p>
+                </div>
+
+                <!-- 3D Orbiting Memory Galaxy Orbit System -->
+                <div class="galaxy-viewport" id="galaxyViewport">
+                    <div class="galaxy-central-core" aria-hidden="true">
+                        <div class="core-plasma"></div>
+                        <div class="core-label">✦ Us ✦</div>
+                    </div>
+
+                    <div class="floating-memories-constellation" id="galaxyConstellation">
+
+                        <!-- Memory 01 -->
+                        <div class="memory-orbit-item orbit-pos-1" data-index="0" role="button" tabindex="0" aria-label="Open Memory 1: Rouf">
+                            <div class="memory-glass-frame">
+                                <div class="memory-photo-container">
+                                    <img src="assets/images/pic 5.jpg" alt="Memory of Rouf smiling with peace sign" class="galaxy-memory-img" loading="lazy">
+                                </div>
+                                <div class="memory-glass-caption">
+                                    <span class="mem-badge">Memory 01</span>
+                                    <h4 class="mem-title">Rouf</h4>
+                                    <p class="mem-hint">Your effortless smile that brings light into any room.</p>
+                                </div>
+                                <span class="memory-expand-icon">✦</span>
+                            </div>
+                        </div>
+
+                        <!-- Memory 02 -->
+                        <div class="memory-orbit-item orbit-pos-2" data-index="1" role="button" tabindex="0" aria-label="Open Memory 2: Farha">
+                            <div class="memory-glass-frame">
+                                <div class="memory-photo-container">
+                                    <img src="assets/images/farha.jpeg" alt="Photograph of Farha surrounded by lush greenery" class="galaxy-memory-img" loading="lazy">
+                                </div>
+                                <div class="memory-glass-caption">
+                                    <span class="mem-badge">Memory 02</span>
+                                    <h4 class="mem-title">Farha</h4>
+                                    <p class="mem-hint">The girl who thinks of you every time she looks at the stars.</p>
+                                </div>
+                                <span class="memory-expand-icon">✦</span>
+                            </div>
+                        </div>
+
+                        <!-- Memory 03 -->
+                        <div class="memory-orbit-item orbit-pos-3" data-index="2" role="button" tabindex="0" aria-label="Open Memory 3: Shared Moments">
+                            <div class="memory-glass-frame">
+                                <div class="memory-photo-container">
+                                    <img src="assets/images/snap 1.png" alt="Candid waving moment" class="galaxy-memory-img" loading="lazy">
+                                </div>
+                                <div class="memory-glass-caption">
+                                    <span class="mem-badge">Memory 03</span>
+                                    <h4 class="mem-title">A Candid Wave</h4>
+                                    <p class="mem-hint">college thee firstt picc.</p>
+                                </div>
+                                <span class="memory-expand-icon">✦</span>
+                            </div>
+                        </div>
+
+                        <!-- Memory 04 -->
+                        <div class="memory-orbit-item orbit-pos-4" data-index="3" role="button" tabindex="0" aria-label="Open Memory 4: Learning & Laughter">
+                            <div class="memory-glass-frame">
+                                <div class="memory-photo-container">
+                                    <img src="assets/images/green.jpg" alt="Friendship, study sessions, and happy laughter" class="galaxy-memory-img" loading="lazy">
+                                </div>
+                                <div class="memory-glass-caption">
+                                    <span class="mem-badge">Memory 04</span>
+                                    <h4 class="mem-title">Days of Learning</h4>
+                                    <p class="mem-hint">Working hard, sharing dreams, and laughing through every challenge.</p>
+                                </div>
+                                <span class="memory-expand-icon">✦</span>
+                            </div>
+                        </div>
+
+                        <!-- Memory 05: Editable Memory Slot -->
+                        <div class="memory-orbit-item orbit-pos-5" data-index="4" role="button" tabindex="0" aria-label="Open Memory 5: Next Chapter">
+                            <div class="memory-glass-frame placeholder-frame">
+                                <div class="memory-photo-container">
+                            
+                                    <img src="assets/images/happyy.png" alt="Friendship, study sessions, and happy laughter" class="galaxy-memory-img" loading="lazy">
+                                
+                                    <div class="editable-slot-art">
+                                        <span class="slot-sparkle">✦</span>
+                                        <p class="slot-label">[NEW MEMORY SLOT]</p>
+                                    </div>
+                                </div>
+                                <div class="memory-glass-caption">
+                                    <span class="mem-badge">Memory 05</span>
+                                    <h4 class="mem-title">A Future Memory</h4>
+                                    <p class="mem-hint">[EDIT THIS: Click to add or view future moments together]</p>
+                                </div>
+                                <span class="memory-expand-icon">✦</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <p class="galaxy-hint-text">✦ Click on any floating memory star to open it in full cinematic detail ✦</p>
+
+                <!-- Easter Egg Star 3 in Galaxy -->
+                <button class="secret-star star-egg-3" data-secret="&ldquo;I keep every memory of us safe right here in my heart.&rdquo;" aria-label="Shining star in memory galaxy">✦</button>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT III (CONT.) — THE MEMORY ROOM (MEMORY SANCTUARY)
+             =================================================================== -->
+        <section id="act-sanctuary" class="act-section act-sanctuary" aria-label="Memory Sanctuary Room">
+            <div class="section-container">
+                <div class="chapter-header">
+                    <span class="chapter-tag">our pics</span>
+                    <h2 class="chapter-title">The Memory Room</h2>
+                    <p class="chapter-sublead">A quiet sanctuary suspended in starlight, where time slows down.</p>
+                </div>
+
+                <div class="sanctuary-3d-room" id="sanctuaryRoom">
+                    <div class="room-ambient-light light-1"></div>
+                    <div class="room-ambient-light light-2"></div>
+
+                    <div class="hanging-frames-cluster">
+                        <div class="hanging-frame frame-left">
+                            <div class="frame-string"></div>
+                            <div class="frame-glass">
+                                <img src="assets/images/pic 1.jpg" alt="Farha in the quiet sanctuary" class="frame-img" loading="lazy">
+                                <span class="frame-tag">With Love</span>
+                            </div>
+                        </div>
+
+                        <div class="hanging-frame frame-center">
+                            <div class="frame-string"></div>
+                            <div class="frame-glass glowing-border">
+                                <img src="assets/images/pic 2.jpg" alt="Farhan in the center frame" class="frame-img" loading="lazy">
+                                <span class="frame-tag">Our Star</span>
+                            </div>
+                        </div>
+
+                        <div class="hanging-frame frame-right">
+                            <div class="frame-string"></div>
+                            <div class="frame-glass">
+                                <img src="assets/images/pic 3.jpg" alt="Shared moment framed in light" class="frame-img" loading="lazy">
+                                <span class="frame-tag">Golden Moments</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sanctuary-pedestal">
+                        <p class="pedestal-quote">&ldquo;Some moments are meant to be kept forever.&rdquo;</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             SECTION: "IT'S THE LITTLE THINGS."
+             =================================================================== -->
+        <section id="act-little-things" class="act-section act-little-things" aria-label="The Little Things">
+            <div class="section-container">
+                <div class="chapter-header">
+                    <span class="chapter-tag">Reflections</span>
+                    <h2 class="chapter-title">It's The Little Things.</h2>
+                    <p class="chapter-sublead">The quiet details that matter more than words could ever say.</p>
+                </div>
+
+                <div class="little-things-cards-grid">
+                    <div class="whisper-card glass-panel" tabindex="0">
+                        <div class="card-icon">✦</div>
+                        <h4 class="whisper-headline">&ldquo;That one smile...&rdquo;</h4>
+                        <p class="whisper-body editable-content">
+                            [EDIT THIS: ingale smile epozhum nella resaa njn epolum parayelilyee u looks soo good ,cute its all started with a smile.]
+                        </p>
+                    </div>
+
+                    <div class="whisper-card glass-panel" tabindex="0">
+                        <div class="card-icon">✦</div>
+                        <h4 class="whisper-headline">&ldquo;That one laugh...&rdquo;</h4>
+                        <p class="whisper-body editable-content">
+                            [EDIT THIS: The one your smile that makes my whole world feels right.]
+                        </p>
+                    </div>
+
+                    <div class="whisper-card glass-panel" tabindex="0">
+                        <div class="card-icon">✦</div>
+                        <h4 class="whisper-headline">&ldquo;Those random conversations...&rdquo;</h4>
+                        <p class="whisper-body editable-content">
+                            [EDIT THIS: From deep late talks to funny little jokes that only you and I understand aganeee koreee ilyeee.]
+                        </p>
+                    </div>
+
+                    <div class="whisper-card glass-panel" tabindex="0">
+                        <div class="card-icon">✦</div>
+                        <h4 class="whisper-headline">&ldquo;Those moments that somehow became memories...&rdquo;</h4>
+                        <p class="whisper-body editable-content">
+                            [EDIT THIS: ingal vanneynte sheshannh njn engne memories oke idthekan thodagyedh ndhondaa ariyoo youuu aree specialll.]
+                        </p>
+                    </div>
+
+                    <div class="whisper-card glass-panel wide-whisper" tabindex="0">
+                        <div class="card-icon">❤️</div>
+                        <h4 class="whisper-headline">&ldquo;The little things that mean more than they seem.&rdquo;</h4>
+                        <p class="whisper-body editable-content">
+                            [EDIT THIS: ingale opm ille cheriye cheriye karyam annh enne ithre happy aknnh shanuoo. You make loving you the easiest thing in the world.]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT IV — THE LOVE LETTER SECTION
+             HARD REQUIREMENTS:
+             - Complete personal message from Farha to Farhan represented in HTML
+             - Must be easy to edit
+             - Uses actual letter background image: assets/images/letter-bg.jpg
+             =================================================================== -->
+        <section id="act-letter" class="act-section act-letter" aria-label="Act IV: A Letter From Me To You">
+            <div class="section-container">
+                <div class="chapter-header">
+                    <span class="chapter-tag">The Heart</span>
+                    <h2 class="chapter-title">A Letter From Me To You</h2>
+                    <p class="chapter-sublead">Where words speak what the heart has always felt.</p>
+                </div>
+
+                <!-- 3D Interactive Envelope Container -->
+                <div class="envelope-interactive-stage">
+                    <div class="envelope-3d-box" id="envelope3D">
+                        <div class="envelope-flap" id="envelopeFlap">
+                            <div class="wax-seal" id="waxSeal" role="button" tabindex="0" aria-label="Open the love letter envelope">
+                                <span class="seal-initials">F &amp; R</span>
+                                <span class="seal-glow"></span>
+                            </div>
+                        </div>
+                        <div class="envelope-pocket"></div>
+                        <div class="envelope-letter-sheet" id="letterSheet" style="background-image: url('assets/images/letter-bg.jpg');">
+                            
+                            <!-- HARD CONTENT REQUIREMENT: Farha's full personal message in HTML -->
+                            <article class="letter-inner-document" id="loveLetterArticle">
+                                <header class="letter-header">
+                                    <span class="letter-date-heading">On Your Birthday ✦ November 3 2026</span>
+                                    <h3 class="letter-recipient-salutation">Dear Shanuoo,</h3>
+                                </header>
+
+                                <div class="letter-body-text editable-content" id="farhaLetterMessage">
+                                    <p class="letter-paragraph">
+                                        
+                                    </p>
+                                    <p class="letter-paragraph">
+                                        Happy Birthday, shanuoo! Today is your special day, apo njn vijarchu engne onh ndakannh reselyeee,.
+                                    </p>
+                                    <p class="letter-paragraph">
+                                        i love you moree than u think, adhonda edek edek kannannm paraynnh ingale kude korech samayam nikan pattolengilum adh ink  nella happy thernnadha. mukal bagum adi anengilum ingalopm ille moment njn nella happy annh  adhum or resannh first mudhel ille koree karyam paraynnamnh ndd bt adhoke ingal kettadhenne elee adhonda .
+                                    </p>
+                                    <p class="letter-paragraph">
+                                        [EDIT THIS: ingale opm ille ella momentum ink favourite annh bt ettum kudthel edhaa vechha  first njamml karangan poyedh,karaganonnum parayula "nila park"il annh koreee samsarichuu 3 manikurolam samsarichuu adhee pole nte edth elladhum share cheynnadh ,cheriya karyam polum parayumpo ink nella happy eynnh.ink sangadam verumpo njn adhyam paraya ingalodeynnh enne apo comfort akumm hhmmm  ]
+                                    </p>
+                                    <p class="letter-paragraph">
+                                        I hope this bdy bring you whatever you want,amm soo lucky to have u thankyou for being my most valuable person,thankyou for making me smile andd happiestt birthdayyy myyy lovveee,i loovveee yoouuhh ssoo muuucchhh .
+                                    </p>
+                                </div>
+
+                                <footer class="letter-signoff">
+                                    <p class="letter-closing-phrase">With all my love,</p>
+                                    <p class="letter-signature-name">Farha ❤️</p>
+                                </footer>
+                            </article>
+
+                        </div>
+                    </div>
+
+                    <div class="envelope-prompt-action">
+                        <button id="openLetterBtn" class="cosmic-letter-btn" aria-label="Open the letter from Farha">
+                            <span class="btn-icon">✉</span>
+                            <span class="btn-label" id="letterBtnText">CLICK TO OPEN THE LETTER</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT V — THE CELEBRATION
+             =================================================================== -->
+        <section id="act-celebration" class="act-section act-celebration" aria-label="Act V: The Celebration">
+            <div class="celebration-glow-radial"></div>
+
+            <div class="section-container">
+                <div class="celebration-prelude">
+                    <p class="celebrate-lead-line line-1">&ldquo;But today...&rdquo;</p>
+                    <p class="celebrate-lead-line line-2">&ldquo;Today isn't only about the memories.&rdquo;</p>
+                    <p class="celebrate-lead-line line-3">&ldquo;It's about you.&rdquo;</p>
+                </div>
+
+                <div class="celebration-anthem-box">
+                    <h3 class="anthem-line anthem-1">ANOTHER YEAR.</h3>
+                    <h3 class="anthem-line anthem-2">ANOTHER CHAPTER.</h3>
+                    <h3 class="anthem-line anthem-3">ANOTHER REASON TO CELEBRATE YOU.</h3>
+                </div>
+
+                <div class="grand-birthday-reveal" id="grandBirthdayReveal">
+                    <div class="birthday-firework-burst" aria-hidden="true"></div>
+                    <h1 class="celebration-title">HAPPY BIRTHDAY, SHANUOO.</h1>
+
+                    <!-- BIRTHDAY DATE (Requirement 22) -->
+                    <div class="birthday-date-card glass-panel">
+                        <span class="date-sparkle">✦</span>
+                        <h2 class="birthday-date-text editable-content" id="Rouf's BirthdayDate">[ROUF'S BIRTHDAY — November 3]</h2>
+                        <p class="birthday-date-subtitle">Today is your day.</p>
+                    </div>
+
+                    <div class="celebration-interactive-actions">
+                        <button id="launchCelebrationBtn" class="celebrate-sparkle-btn" aria-label="Trigger celebratory stardust and fireworks">
+                            <span class="sparkle-symbol">✨</span>
+                            <span>SHOWER WITH STARDUST &amp; LIGHT</span>
+                        </button>
+                        <button id="makeWishBtn" class="wish-candle-btn" aria-label="Make a romantic birthday wish">
+                            <span class="flame-symbol">🕯️</span>
+                            <span>MAKE A WISH, Rouf</span>
+                        </button>
+                    </div>
+
+                    <div id="wishConfirmation" class="wish-confirmation" role="status" aria-live="polite">
+                        <p class="wish-text">✨ Your wish has been sent to the stars, Farhan. May it come true! ✨</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             ACT VI — THE FINAL SURPRISE
+             =================================================================== -->
+        <section id="act-final" class="act-section act-final" aria-label="Act VI: The Final Surprise">
+            <div class="final-night-curtain"></div>
+
+            <div class="section-container">
+                <div class="final-whisper-sequence">
+                    <p class="final-line line-1">&ldquo;One last thing...&rdquo;</p>
+                    <p class="final-line line-2">&ldquo;No matter how many memories we create...&rdquo;</p>
+                    <p class="final-line line-3">&ldquo;I hope there are many more waiting for us.&rdquo;</p>
+                </div>
+
+                <div class="final-climax-card">
+                    <h2 class="final-birthday-blessing">Happy Birthday, Rouf.</h2>
+                    <p class="final-signature-signoff">With love, <span class="final-name">Farha ❤️</span></p>
+
+                    <!-- Glowing Constellation: F + R Connected by Heart -->
+                    <div class="infinity-constellation" id="infinityConstellation">
+                        <div class="constellation-star star-f1">
+                            <span class="star-point">✦</span>
+                            <span class="star-letter">F</span>
+                            <span class="star-subname">Farha</span>
+                        </div>
+
+                        <div class="constellation-heart-link">
+                            <svg class="heart-link-svg" viewBox="0 0 200 100" aria-hidden="true">
+                                <path class="glow-path" d="M 30,50 Q 100,0 170,50 Q 100,100 30,50" />
+                                <path class="pulse-path" d="M 30,50 Q 100,0 170,50 Q 100,100 30,50" />
+                            </svg>
+                            <span class="central-heart-gem">❤️</span>
+                        </div>
+
+                        <div class="constellation-star star-f2">
+                            <span class="star-point">✦</span>
+                            <span class="star-letter">R</span>
+                            <span class="star-subname">Rouf</span>
+                        </div>
+                    </div>
+
+                    <div class="final-editable-note editable-content">
+                        <p>[FINAL ROMANTIC NOTE — EDIT THIS: Always and forever, by your side.]</p>
+                    </div>
+
+                    <div class="universe-replay-wrap">
+                        <button id="reliveExperienceBtn" class="replay-btn" aria-label="Relive the universe from the beginning">
+                            <span>✦ RELIVE OUR LITTLE UNIVERSE ✦</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ===================================================================
+         CINEMATIC FULL-SCREEN MEMORY VIEWER (MODAL)
+         Requirement 13: Large image, caption, memory number, prev/next, close,
+         Esc key, touch swipe, keyboard navigation.
+         =================================================================== -->
+    <div id="memoryModal" class="memory-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+
+        <div class="modal-dialog-content">
+            <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close memory viewer (Escape key)">✕</button>
+
+            <div class="modal-viewer-body">
+                <button id="modalPrevBtn" class="modal-nav-btn prev-btn" aria-label="Previous memory (Left arrow key)">❮</button>
+
+                <div class="modal-media-frame">
+                    <img id="modalImage" src="assets/images/farhan.jpeg" alt="Memory photograph" class="modal-current-img">
+                    <div class="modal-caption-bar">
+                        <div class="modal-caption-header">
+                            <span id="modalNumber" class="modal-memory-count">Memory 01 of 04</span>
+                            <span id="modalDate" class="modal-memory-date">A Special Moment</span>
+                        </div>
+                        <h3 id="modalTitle" class="modal-memory-title">Farhan</h3>
+                        <p id="modalDescription" class="modal-memory-desc">A smile that brings light into any room.</p>
+                    </div>
+                </div>
+
+                <button id="modalNextBtn" class="modal-nav-btn next-btn" aria-label="Next memory (Right arrow key)">❯</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT MODULES -->
+    <script src="js/audio.js"></script>
+    <script src="js/galaxy.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/confetti.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
